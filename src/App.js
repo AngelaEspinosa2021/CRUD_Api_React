@@ -1,5 +1,7 @@
-import React, { createContext, useContext, useReducer, useEffect, useRef, useState } from 'react';
+import React from 'react';
+import Todo from './components/Todo';
 
+/*
 const HOST_API = "http://localhost:8081/api"
 
 const initialState = {
@@ -155,13 +157,18 @@ const StoreProvider = ({ children }) => {
     {children}
   </Store.Provider>
 }
-
+*/
 
 function App() {
-  return <StoreProvider>
+  /*return <StoreProvider>
     <Form />
     <List />
-  </StoreProvider>
+  </StoreProvider>*/
+  return (
+    <Todo />
+  );
+
+
 }
 
 export default App;
