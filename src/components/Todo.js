@@ -62,16 +62,16 @@ const todo = () => {
               formRef.current.reset();
             });
         }
-      
-      
-        return <form ref={formRef}>
-          <input type="text" name="name" defaultValue={item.name} onChange={(event) => {
+            
+        return(
+            <form ref={formRef}>
+            <input type="text" name="name" defaultValue={item.name} onChange={(event) => {
             setState({ ...state, name: event.target.value })
-          }} ></input>
-          {item.id && <button onClick={onEdit}>Editar</button>}
-          {!item.id && <button onClick={onAdd}>Agregar</button>}
-      
-        </form>
+            }} ></input>
+            {item.id && <button onClick={onEdit}>Editar</button>}
+            {!item.id && <button onClick={onAdd}>Agregar</button>}
+            </form>
+        ); 
     }
     
     const List = () => {
@@ -113,7 +113,7 @@ const todo = () => {
                     return <tr key={todo.id}>
                       <td>{todo.id}</td>
                       <td>{todo.name}</td>
-                      <td>{todo.isComplete === true ? "SI" : "NO"}</td>
+                      <td>{todo.isComplete === true ? "SI" : "NO"}</td>         
                       <td><button onClick={() => onDelete(todo.id)}>Eliminar</button></td>
                       <td><button onClick={() => onEdit(todo)}>Editar</button></td>
                     </tr>
