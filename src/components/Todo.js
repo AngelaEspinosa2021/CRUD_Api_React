@@ -65,11 +65,18 @@ const todo = () => {
             
         return(
             <form ref={formRef}>
-            <input type="text" name="name" defaultValue={item.name} onChange={(event) => {
-            setState({ ...state, name: event.target.value })
-            }} ></input>
-            {item.id && <button onClick={onEdit}>Editar</button>}
-            {!item.id && <button onClick={onAdd}>Agregar</button>}
+                <div class="row">
+                    <div class="col-sm-3">
+                        <input type="text" className="form-control" name="name"
+                            defaultValue={item.name} onChange={(event) => {
+                            setState({ ...state, name: event.target.value })
+                        }}/>                                                
+                    </div>
+                    <div class="col-sm-3">
+                        {item.id && <button className="btn btn-success" onClick={onEdit}>Editar</button>}
+                        {!item.id && <button className="btn btn-success" onClick={onAdd}>Agregar</button>}
+                    </div>
+                </div>            
             </form>
         ); 
     }
@@ -99,27 +106,29 @@ const todo = () => {
           };
       
           return (
-            <div>
-              <table>
-                <thead>
-                  <tr>
-                    <td>Id</td>
-                    <td>Nombre</td>
-                    <td>¿Esta completado?</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  {state.list.map((todo) => {
-                    return <tr key={todo.id}>
-                      <td>{todo.id}</td>
-                      <td>{todo.name}</td>
-                      <td>{todo.isComplete === true ? "SI" : "NO"}</td>         
-                      <td><button onClick={() => onDelete(todo.id)}>Eliminar</button></td>
-                      <td><button onClick={() => onEdit(todo)}>Editar</button></td>
+            <div class="row">
+                <div class="col-sm-3">
+                    <table className="table table-hover">
+                    <thead>
+                    <tr>
+                        <td><b>Id</b></td>
+                        <td><b>Nombre</b></td>
+                        <td><b>¿Esta completado?</b></td>
                     </tr>
-                  })}
-                </tbody>
-              </table>
+                    </thead>
+                    <tbody>
+                    {state.list.map((todo) => {
+                        return <tr key={todo.id}>
+                        <td>{todo.id}</td>
+                        <td>{todo.name}</td>
+                        <td>{todo.isComplete === true ? "SI" : "NO"}</td>         
+                        <td><button className="btn btn-primary" onClick={() => onDelete(todo.id)}>Eliminar</button></td>
+                        <td><button className="btn btn-primary" onClick={() => onEdit(todo)}>Editar</button></td>
+                        </tr>
+                    })}
+                    </tbody>
+                </table>
+                </div>              
             </div>
           );
     }
